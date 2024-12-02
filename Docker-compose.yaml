@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  DB:
+    image: postgres
+    restart: always
+    container_name: EDEKA_DB
+    environment:
+      POSTGRES_USER: edekaFinder
+      POSTGRES_PASSWORD: edekafinder
+      POSTGRES_DB: EDEKA
+    build: .
+    volumes:
+      - ./docker-volumes/postgresql/data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

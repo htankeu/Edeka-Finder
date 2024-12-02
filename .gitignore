@@ -48,6 +48,9 @@ web_modules/
 # TypeScript cache
 *.tsbuildinfo
 
+# Generated Docker's modules
+docker-volumes/
+
 # Optional npm cache directory
 .npm
 
