@@ -1,7 +1,8 @@
 import { IProduct } from "./product.interface";
 
 export interface IProductCategory {
+  CategoryId: number;
   Name: string;
-  Product: IProduct;
+  ProductList: IProduct[];
   Quantity: number;
 }

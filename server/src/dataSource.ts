@@ -1,6 +1,7 @@
 import { DataSource } from "typeorm";
-import { User } from "./Entities/User";
+import { User } from "./entity/User";
 import dotenv from "dotenv";
+import { Product } from "./entity/Product";
 
 dotenv.config();
 
@@ -19,7 +20,7 @@ export const dataSource: DataSource = new DataSource({
   database: db_name,
   synchronize: true,
   logging: true,
-  entities: [User],
+  entities: [User, Product],
   subscribers: [],
   migrations: [],
 });

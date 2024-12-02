@@ -17,7 +17,7 @@ app.listen(port, () => {
       console.log(`The system is running on port: ${port}`);
     })
     .catch((error: any) => {
-      console.error("Error by the initialization");
+      console.error("Error by the initialization",error);
     });
 });
 
