@@ -4,4 +4,5 @@ export enum ErrorType {
   NoInDatabase = "not_in_database",
   WrongCredentials = "wrong_credentials",
   MissingUser = "missing_user",
+  IncompleteInformation = "not_complete_information",
 }

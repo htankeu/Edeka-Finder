@@ -43,11 +43,11 @@ export class AuthService {
     this.userService = new UserService();
   }
 
-  async register(user: IUser): Promise<string | undefined | ErrorType> {
+  async register(user: IUser): Promise<User> {
     try {
       // check if user already exist
       const checkMail: User | null = await this.userRepository.findOne({ where: { Email: user.Email } });
-      if (checkMail) return ErrorType.EmailAlreadyTaken;
+      if (checkMail) throw ErrorType.EmailAlreadyTaken;
 
       const hashedPassword: string = await this.hashWord(user.Password, this.saltRound);
 
@@ -59,9 +59,11 @@ export class AuthService {
       newUser.Phonenumber = user.Phonenumber;
       newUser.Role = ROLE.USER;
 
-      this.userService.create(newUser);
+      const registerdUser: User = await this.userService.create(newUser);
+
+      return registerdUser;
     } catch (error) {
-      return ParseError.errorToParse(error);
+      throw ParseError.errorToParse(error);
     }
   }
 
