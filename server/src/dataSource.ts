@@ -1,5 +1,4 @@
 import { DataSource } from "typeorm";
-import "reflect-metadata";
 import { User } from "./Entities/User";
 import dotenv from "dotenv";
 
