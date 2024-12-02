@@ -1,4 +1,6 @@
 export interface ISession {
-  sessionId: number;
+  sessionId: string;
   userMail: string;
+  TokenId: string;
+  CreatedAt: BigInt;
 }

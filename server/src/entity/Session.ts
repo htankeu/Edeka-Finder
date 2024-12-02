@@ -1,12 +1,18 @@
-import { Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { ISession } from "../bridge/Interfaces/session.interface";
 import { User } from "./User";
 
 @Entity()
 export class Sesson implements ISession {
   @PrimaryGeneratedColumn("uuid")
-  sessionId: number;
+  userMail: string;
 
   @OneToOne(() => User, (user) => user.Email)
-  userMail: string;
+  TokenId: string;
+
+  @Column({ type: "uuid" })
+  sessionId: string;
+
+  @Column({ type: "datetime" })
+  CreatedAt: BigInt;
 }
