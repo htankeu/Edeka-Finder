@@ -5,4 +5,5 @@ export default interface IUser {
   Phonenumber: string;
   Address: string;
   Role: string;
+  SessionId?: string;
 }

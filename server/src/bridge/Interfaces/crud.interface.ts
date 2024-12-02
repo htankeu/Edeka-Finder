@@ -1,7 +1,7 @@
 export interface CRUD<T> {
   list(take: number, number: number): Promise<any>;
 
-  create(resources: T): Promise<T>;
+  create(resources: any): Promise<T>;
 
   read(key: any): Promise<any>;
 

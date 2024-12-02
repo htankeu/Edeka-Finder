@@ -5,6 +5,7 @@ import { Product } from "./entity/Product";
 import { ProductCategory } from "./entity/ProductCategory";
 import { Rack } from "./entity/Rack";
 import { Ray } from "./entity/Ray";
+import { Sesson } from "./entity/Session";
 
 dotenv.config();
 
@@ -23,7 +24,7 @@ export const dataSource: DataSource = new DataSource({
   database: db_name,
   synchronize: true,
   logging: true,
-  entities: [User, Product, ProductCategory, Rack, Ray],
+  entities: [User, Product, ProductCategory, Rack, Ray, Sesson],
   subscribers: [],
   migrations: [],
 });

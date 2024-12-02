@@ -1,9 +1,9 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, OneToOne, PrimaryColumn } from "typeorm";
 import IUser from "../bridge/Interfaces/user.Interface";
+import { Sesson } from "./Session";
 
 @Entity()
 export class User implements IUser {
-
   @PrimaryColumn()
   Email: string;
 
@@ -21,4 +21,7 @@ export class User implements IUser {
 
   @Column({ type: "varchar", length: 15, select: true })
   Role: string;
+
+  @OneToOne(() => Sesson, (sesson) => sesson.sessionId)
+  SessionId: string;
 }
