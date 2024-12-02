@@ -2,6 +2,9 @@ import { DataSource } from "typeorm";
 import { User } from "./entity/User";
 import dotenv from "dotenv";
 import { Product } from "./entity/Product";
+import { ProductCategory } from "./entity/ProductCategory";
+import { Rack } from "./entity/Rack";
+import { Ray } from "./entity/Ray";
 
 dotenv.config();
 
@@ -20,7 +23,7 @@ export const dataSource: DataSource = new DataSource({
   database: db_name,
   synchronize: true,
   logging: true,
-  entities: [User, Product],
+  entities: [User, Product, ProductCategory, Rack, Ray],
   subscribers: [],
   migrations: [],
 });
