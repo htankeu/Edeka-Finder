@@ -1,13 +1,8 @@
 import {
-  Column,
-  Entity,
-  ManyToMany,
-  OneToMany,
-  OneToOne,
-  PrimaryGeneratedColumn,
+    Column,
+    Entity, OneToMany, PrimaryGeneratedColumn
 } from "typeorm";
 import { IRay } from "../bridge/Interfaces/ray.interface";
-import { IProduct } from "../bridge/Interfaces/product.interface";
 import { Product } from "./Product";
 import { Rack } from "./Rack";
 
