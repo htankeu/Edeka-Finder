@@ -1,8 +1,12 @@
+import Login from "../components/Auth-login.component";
+import Register from "../components/Auth-register.component";
+
 const AuthPage: React.FC = () => {
   return (
     <>
       <div>
-        <h1 className="text-black">AZAMBEWOM</h1>
+        <Login />
+        <Register />
       </div>
     </>
   );
