@@ -4,8 +4,8 @@ import type { SplashModel } from "../models/splash.model";
 const WelcomeSplash: React.FC<SplashModel> = (splasParam: SplashModel) => {
   return (
     <>
-      <div className={`h-screen flex items-cente justify-center transition opacity ease-linear delay-1000 ${splasParam.isVisible ? "visible" : "hidden"}`}>
-        <img className="transition opacity ease-linear delay-1000" src={edekabg.src} />
+      <div className={`h-screen flex items-center justify-center transition-opacity ease-in-out duration-1000 ${splasParam.isVisible ? "visible" : "opacity-0 hidden"}`}>
+        <img className="transition-opacity ease-in-out duration-1000" src={edekabg.src} />
       </div>
     </>
   );
