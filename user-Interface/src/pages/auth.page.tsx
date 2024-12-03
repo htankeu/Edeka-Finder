@@ -2,7 +2,7 @@ const AuthPage: React.FC = () => {
   return (
     <>
       <div>
-        Toto
+        <h1 className="text-black">AZAMBEWOM</h1>
       </div>
     </>
   );
