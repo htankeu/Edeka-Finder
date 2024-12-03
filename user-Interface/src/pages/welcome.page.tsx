@@ -6,9 +6,11 @@ const WelcomePage: React.FC = () => {
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowSplash(false), 4000);
+    const timer = setTimeout(() => setShowSplash(false), 2000);
+    console.log("splash value", showSplash);
     return () => clearTimeout(timer);
   }, []);
+
   return (
     <>
       <div>
