@@ -1,0 +1,16 @@
+svg path{
+    fill: #a4ced2;
+    stroke: #fff;
+    stroke-width: 1px;
+    transition: fill 0.3s;
+}
+svg path:hover{
+    fill: #153aa2;
+}
+
+svg path #DE-RP{
+    fill: #153aa2;
+}
+path #DE-RP:hover{
+    fill: #ac1142;
+}

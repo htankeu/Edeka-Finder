@@ -15,13 +15,13 @@ const Register: React.FC<{ toogle: () => void }> = (Toogle) => {
             <Form.Item name="Firstname" rules={[{ required: true, message: "Firstname" }]}>
               <Space.Compact>
                 <Button icon={<UserOutlined />} className="bg-btn-primary"></Button>
-                <Input placeholder="Firstname" />
+                <Input placeholder="Firstname" className="px-10"/>
               </Space.Compact>
             </Form.Item>
             <Form.Item name="Lastname" rules={[{ required: true, message: "Lastname" }]}>
               <Space.Compact>
                 <Button icon={<UserOutlined />} className="bg-btn-primary"></Button>
-                <Input placeholder="Lastname" />
+                <Input placeholder="Lastname" className="px-10"/>
               </Space.Compact>
             </Form.Item>
           </div>
@@ -29,20 +29,20 @@ const Register: React.FC<{ toogle: () => void }> = (Toogle) => {
           <Form.Item name="Email" rules={[{ required: true, message: "Email" }]}>
             <Space.Compact style={{ width: "100%" }}>
               <Button icon={<MailOutlined />} className="bg-btn-primary"></Button>
-              <Input placeholder="Email" />
+              <Input placeholder="Email" className="px-10"/>
             </Space.Compact>
           </Form.Item>
 
           <Form.Item name="password" rules={[{ required: true, message: "Password" }]} className="text-white">
             <Space.Compact style={{ width: "100%" }}>
               <Button icon={<LockOutlined />} className="bg-btn-primary"></Button>
-              <Input placeholder="Password" />
+              <Input placeholder="Password" className="px-10"/>
             </Space.Compact>
           </Form.Item>
           <Form.Item name="password" rules={[{ required: true, message: "Password" }]} className="text-white">
             <Space.Compact style={{ width: "100%" }}>
               <Button icon={<LockOutlined />} className="bg-btn-primary"></Button>
-              <Input placeholder="Password confirm" />
+              <Input placeholder="Password confirm" className="px-10"/>
             </Space.Compact>
           </Form.Item>
 
