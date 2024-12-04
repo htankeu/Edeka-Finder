@@ -14,13 +14,13 @@ const Register: React.FC<{ toogle: () => void }> = (Toogle) => {
           <div className="flex flex-col lg:flex-row lg:gap-5">
             <Form.Item name="Firstname" rules={[{ required: true, message: "Firstname" }]}>
               <Space.Compact>
-                <Button icon={<UserOutlined />} className="bg-btn-primary"></Button>
+                <Button icon={<UserOutlined color="#000"/>} className="bg-btn-primary"></Button>
                 <Input placeholder="Firstname" className="px-10"/>
               </Space.Compact>
             </Form.Item>
             <Form.Item name="Lastname" rules={[{ required: true, message: "Lastname" }]}>
               <Space.Compact>
-                <Button icon={<UserOutlined />} className="bg-btn-primary"></Button>
+                <Button icon={<UserOutlined color="#000"/>} className="bg-btn-primary"></Button>
                 <Input placeholder="Lastname" className="px-10"/>
               </Space.Compact>
             </Form.Item>
@@ -28,27 +28,27 @@ const Register: React.FC<{ toogle: () => void }> = (Toogle) => {
 
           <Form.Item name="Email" rules={[{ required: true, message: "Email" }]}>
             <Space.Compact style={{ width: "100%" }}>
-              <Button icon={<MailOutlined />} className="bg-btn-primary"></Button>
+              <Button icon={<MailOutlined color="#000"/>} className="bg-btn-primary"></Button>
               <Input placeholder="Email" className="px-10"/>
             </Space.Compact>
           </Form.Item>
 
           <Form.Item name="password" rules={[{ required: true, message: "Password" }]} className="text-white">
             <Space.Compact style={{ width: "100%" }}>
-              <Button icon={<LockOutlined />} className="bg-btn-primary"></Button>
+              <Button icon={<LockOutlined color="#000"/>} className="bg-btn-primary"></Button>
               <Input placeholder="Password" className="px-10"/>
             </Space.Compact>
           </Form.Item>
           <Form.Item name="password" rules={[{ required: true, message: "Password" }]} className="text-white">
             <Space.Compact style={{ width: "100%" }}>
-              <Button icon={<LockOutlined />} className="bg-btn-primary"></Button>
+              <Button icon={<LockOutlined color="#000"/>} className="bg-btn-primary"></Button>
               <Input placeholder="Password confirm" className="px-10"/>
             </Space.Compact>
           </Form.Item>
 
           <Form.Item className="lg:flex justify-center">
             <div className="flex flex-col gap-1">
-            <Button block type="primary" icon={<ArrowRightOutlined />} className="bg-btn-primary text-black font-semibold lg:px-16" htmlType="submit">
+            <Button block type="primary" icon={<ArrowRightOutlined color="#000"/>} className="bg-btn-primary text-black font-semibold lg:px-16" htmlType="submit">
               Register
             </Button>
             <a className="text-center text-white my-2" onClick={Toogle.toogle}>
