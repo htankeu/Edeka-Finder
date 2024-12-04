@@ -8,13 +8,13 @@ const Login: React.FC<{ toogle: () => void }> = (Toogle) => {
 
   return (
     <>
-      <div className="w-screen h-screen text-white bg-zinc-800 flex flex-col gap-9 justify-center items-center">
+      <div className="w-screen h-screen text-white bg-zinc-800 flex flex-col gap-10 justify-center items-center">
         <h1 className="font-bold text-xl">Login</h1>
         <Form name="login" initialValues={{ remember: true }} style={{ maxWidth: 460 }} onFinish={onFinish}>
           <Form.Item name="identifier" rules={[{ required: true, message: "Email" }]}>
             <Space.Compact>
               <Button icon={<MailOutlined />} className="bg-btn-primary"></Button>
-              <Input placeholder="Email" />
+              <Input placeholder="Email" className="px-10"/>
             </Space.Compact>
           </Form.Item>
 
@@ -22,7 +22,7 @@ const Login: React.FC<{ toogle: () => void }> = (Toogle) => {
             <Form.Item name="password" rules={[{ required: true, message: "Password" }]} className="text-white">
               <Space.Compact>
                 <Button icon={<LockOutlined />} className="bg-btn-primary"></Button>
-                <Input placeholder="Password" />
+                <Input placeholder="Password" className="px-10"/>
               </Space.Compact>
             </Form.Item>
             <a className="text-white">Forgot password</a>
