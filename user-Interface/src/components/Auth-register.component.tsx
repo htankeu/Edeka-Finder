@@ -1,5 +1,5 @@
 import { ArrowRightOutlined, LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Flex, Form, Input } from "antd";
+import { Button, Checkbox, Flex, Form, Input, Space } from "antd";
 
 const Register: React.FC<{ toogle: () => void }> = (Toogle) => {
   const onFinish = (values: any) => {
@@ -13,22 +13,37 @@ const Register: React.FC<{ toogle: () => void }> = (Toogle) => {
         <Form name="login" initialValues={{ remember: true }} style={{ maxWidth: 460 }} onFinish={onFinish}>
           <div className="flex flex-col lg:flex-row lg:gap-5">
             <Form.Item name="Firstname" rules={[{ required: true, message: "Firstname" }]}>
-              <Input prefix={<UserOutlined />} placeholder="Firstname" />
+              <Space.Compact>
+                <Button icon={<UserOutlined />} className="bg-btn-primary"></Button>
+                <Input placeholder="Firstname" />
+              </Space.Compact>
             </Form.Item>
             <Form.Item name="Lastname" rules={[{ required: true, message: "Lastname" }]}>
-              <Input prefix={<UserOutlined />} placeholder="Lastname" />
+              <Space.Compact>
+                <Button icon={<UserOutlined />} className="bg-btn-primary"></Button>
+                <Input placeholder="Lastname" />
+              </Space.Compact>
             </Form.Item>
           </div>
 
           <Form.Item name="Email" rules={[{ required: true, message: "Email" }]}>
-            <Input prefix={<MailOutlined />} placeholder="Email" />
+            <Space.Compact style={{width:'100%'}}>
+              <Button icon={<MailOutlined />} className="bg-btn-primary"></Button>
+              <Input placeholder="Email" />
+            </Space.Compact>
           </Form.Item>
 
           <Form.Item name="password" rules={[{ required: true, message: "Password" }]} className="text-white">
-            <Input prefix={<LockOutlined />} placeholder="Password" />
+            <Space.Compact style={{width:'100%'}}>
+              <Button icon={<LockOutlined />} className="bg-btn-primary"></Button>
+              <Input placeholder="Password" />
+            </Space.Compact>
           </Form.Item>
           <Form.Item name="password" rules={[{ required: true, message: "Password" }]} className="text-white">
-            <Input prefix={<LockOutlined />} placeholder="Password confirm" />
+            <Space.Compact style={{width:'100%'}}>
+              <Button icon={<LockOutlined />} className="bg-btn-primary"></Button>
+              <Input placeholder="Password confirm" />
+            </Space.Compact>
           </Form.Item>
 
           <Form.Item className="lg:flex justify-center">
