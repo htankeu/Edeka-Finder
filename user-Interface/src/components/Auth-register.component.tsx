@@ -11,7 +11,7 @@ const Register: React.FC<{ toogle: () => void }> = (Toogle) => {
       <div className="w-screen h-screen text-white bg-zinc-800 flex flex-col gap-9 justify-center items-center">
         <h1 className="font-bold text-xl">Register</h1>
         <Form name="login" initialValues={{ remember: true }} style={{ maxWidth: 460 }} onFinish={onFinish}>
-          <div className="flex flex-row gap-5">
+          <div className="flex flex-col lg:flex-row lg:gap-5">
             <Form.Item name="Firstname" rules={[{ required: true, message: "Firstname" }]}>
               <Input prefix={<UserOutlined />} placeholder="Firstname" />
             </Form.Item>
@@ -31,8 +31,8 @@ const Register: React.FC<{ toogle: () => void }> = (Toogle) => {
             <Input prefix={<LockOutlined />} placeholder="Password confirm" />
           </Form.Item>
 
-          <Form.Item className="flex justify-center">
-            <Button block type="primary" icon={<ArrowRightOutlined />} className="bg-btn-primary text-black font-semibold px-16" htmlType="submit">
+          <Form.Item className="lg:flex justify-center">
+            <Button block type="primary" icon={<ArrowRightOutlined />} className="bg-btn-primary text-black font-semibold lg:px-16" htmlType="submit">
               Register
             </Button>
             <a href="" className="text-center text-white my-2" onClick={Toogle.toogle}>
