@@ -5,11 +5,11 @@ svg path{
     transition: fill 0.3s;
 }
 svg path:hover{
-    fill: #153aa2;
+    fill: #151ea2;
 }
 
 svg path #DE-RP{
-    fill: #153aa2;
+    fill: #15a236;
 }
 path #DE-RP:hover{
     fill: #ac1142;

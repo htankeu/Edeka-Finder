@@ -21,7 +21,7 @@ const GermanMap: React.FC = () => {
   return (
     <>
       <div>
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 597 1200">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 590 1200">
           <g>
             <path
               id="DE-BW"
@@ -115,7 +115,7 @@ const GermanMap: React.FC = () => {
             />
             <path
               id="DE-RP"
-              className="land fill-[#153aa2] hover:fill-[#ac1142] cursor-pointer"
+              className="land fill-[#15a236] hover:fill-[#ac1142] cursor-pointer"
               onMouseEnter={(e) => {
                 handleMouseEnter(e, "Rhineland-Palatinate");
               }}
