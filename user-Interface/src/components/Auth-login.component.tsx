@@ -19,12 +19,12 @@ const Login: React.FC<{ toogle: () => void }> = (Toogle) => {
           </Form.Item>
 
           <div className="flex flex-col gap-0 text-right">
-          <Form.Item name="password" rules={[{ required: true, message: "Password" }]} className="text-white">
-            <Space.Compact>
-              <Button icon={<LockOutlined />} className="bg-btn-primary"></Button>
-              <Input placeholder="Password" />
-            </Space.Compact>
-          </Form.Item>
+            <Form.Item name="password" rules={[{ required: true, message: "Password" }]} className="text-white">
+              <Space.Compact>
+                <Button icon={<LockOutlined />} className="bg-btn-primary"></Button>
+                <Input placeholder="Password" />
+              </Space.Compact>
+            </Form.Item>
             <a className="text-white">Forgot password</a>
           </div>
 
@@ -37,12 +37,14 @@ const Login: React.FC<{ toogle: () => void }> = (Toogle) => {
           </Form.Item>
 
           <Form.Item>
-            <Button block type="primary" icon={<ArrowRightOutlined />} className="bg-btn-primary text-black font-semibold" htmlType="submit">
-              Log in
-            </Button>
-            <a className="text-center text-white my-2" onClick={Toogle.toogle}>
-              <p>Register now!</p>
-            </a>
+            <div className="flex flex-col gap-1">
+              <Button block type="primary" icon={<ArrowRightOutlined />} className="bg-btn-primary text-black font-semibold" htmlType="submit">
+                Log in
+              </Button>
+              <a className="text-center text-white my-2" onClick={Toogle.toogle}>
+                <p>Register now!</p>
+              </a>
+            </div>
           </Form.Item>
         </Form>
       </div>

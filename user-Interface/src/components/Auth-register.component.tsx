@@ -47,12 +47,14 @@ const Register: React.FC<{ toogle: () => void }> = (Toogle) => {
           </Form.Item>
 
           <Form.Item className="lg:flex justify-center">
+            <div className="flex flex-col gap-1">
             <Button block type="primary" icon={<ArrowRightOutlined />} className="bg-btn-primary text-black font-semibold lg:px-16" htmlType="submit">
               Register
             </Button>
             <a className="text-center text-white my-2" onClick={Toogle.toogle}>
               <p>Log in !</p>
             </a>
+            </div>
           </Form.Item>
         </Form>
       </div>
