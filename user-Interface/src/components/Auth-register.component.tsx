@@ -27,20 +27,20 @@ const Register: React.FC<{ toogle: () => void }> = (Toogle) => {
           </div>
 
           <Form.Item name="Email" rules={[{ required: true, message: "Email" }]}>
-            <Space.Compact style={{width:'100%'}}>
+            <Space.Compact style={{ width: "100%" }}>
               <Button icon={<MailOutlined />} className="bg-btn-primary"></Button>
               <Input placeholder="Email" />
             </Space.Compact>
           </Form.Item>
 
           <Form.Item name="password" rules={[{ required: true, message: "Password" }]} className="text-white">
-            <Space.Compact style={{width:'100%'}}>
+            <Space.Compact style={{ width: "100%" }}>
               <Button icon={<LockOutlined />} className="bg-btn-primary"></Button>
               <Input placeholder="Password" />
             </Space.Compact>
           </Form.Item>
           <Form.Item name="password" rules={[{ required: true, message: "Password" }]} className="text-white">
-            <Space.Compact style={{width:'100%'}}>
+            <Space.Compact style={{ width: "100%" }}>
               <Button icon={<LockOutlined />} className="bg-btn-primary"></Button>
               <Input placeholder="Password confirm" />
             </Space.Compact>
@@ -50,7 +50,7 @@ const Register: React.FC<{ toogle: () => void }> = (Toogle) => {
             <Button block type="primary" icon={<ArrowRightOutlined />} className="bg-btn-primary text-black font-semibold lg:px-16" htmlType="submit">
               Register
             </Button>
-            <a href="" className="text-center text-white my-2" onClick={Toogle.toogle}>
+            <a className="text-center text-white my-2" onClick={Toogle.toogle}>
               <p>Log in !</p>
             </a>
           </Form.Item>

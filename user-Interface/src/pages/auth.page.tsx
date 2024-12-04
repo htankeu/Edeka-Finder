@@ -4,7 +4,7 @@ import Register from "../components/Auth-register.component";
 import HeaderNav from "../components/nav/Header-nav.component";
 
 const AuthPage: React.FC = () => {
-  const [isLogin, setIsLoging] = useState<boolean>(false);
+  const [isLogin, setIsLoging] = useState<boolean>(true);
 
   const toogleAuth = () => {
     setIsLoging((prevState) => !prevState);

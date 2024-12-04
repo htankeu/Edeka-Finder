@@ -1,7 +1,7 @@
 import { ArrowRightOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Flex, Form, Input } from "antd";
+import { Button, Checkbox, Flex, Form, Input, Space } from "antd";
 
-const Login: React.FC<{toogle:()=>void}> = (Toogle) => {
+const Login: React.FC<{ toogle: () => void }> = (Toogle) => {
   const onFinish = (values: any) => {
     console.log("OKAY");
   };
@@ -12,15 +12,21 @@ const Login: React.FC<{toogle:()=>void}> = (Toogle) => {
         <h1 className="font-bold text-xl">Login</h1>
         <Form name="login" initialValues={{ remember: true }} style={{ maxWidth: 460 }} onFinish={onFinish}>
           <Form.Item name="identifier" rules={[{ required: true, message: "Email" }]}>
-            <Input prefix={<MailOutlined />} placeholder="Email" />
+            <Space.Compact>
+              <Button icon={<MailOutlined />} className="bg-btn-primary"></Button>
+              <Input placeholder="Email" />
+            </Space.Compact>
           </Form.Item>
 
+          <div className="flex flex-col gap-0 text-right">
           <Form.Item name="password" rules={[{ required: true, message: "Password" }]} className="text-white">
-            <Input prefix={<LockOutlined />} placeholder="Password" />
-            <a href="" className="text-right">
-              <p>Forgot password</p>
-            </a>
+            <Space.Compact>
+              <Button icon={<LockOutlined />} className="bg-btn-primary"></Button>
+              <Input placeholder="Password" />
+            </Space.Compact>
           </Form.Item>
+            <a className="text-white">Forgot password</a>
+          </div>
 
           <Form.Item className="text-white">
             <Flex justify="space-between" align="center">
@@ -34,7 +40,9 @@ const Login: React.FC<{toogle:()=>void}> = (Toogle) => {
             <Button block type="primary" icon={<ArrowRightOutlined />} className="bg-btn-primary text-black font-semibold" htmlType="submit">
               Log in
             </Button>
-          <a href="" className="text-center text-white my-2" onClick={Toogle.toogle}><p>Register now!</p></a>
+            <a className="text-center text-white my-2" onClick={Toogle.toogle}>
+              <p>Register now!</p>
+            </a>
           </Form.Item>
         </Form>
       </div>
