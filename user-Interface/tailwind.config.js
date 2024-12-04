@@ -14,6 +14,9 @@ export default {
       animation: {
         splash: "splash 2s ease-in-out",
       },
+      colors: {
+        "btn-primary": "#f6d207",
+      },
     },
   },
   plugins: [],
