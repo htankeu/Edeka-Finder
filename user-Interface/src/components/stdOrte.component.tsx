@@ -81,7 +81,7 @@ const Orte: React.FC<{ id: string }> = (idRegio) => {
             dataSource={list}
             renderItem={(item) => (
               <List.Item className="text-white">
-                <h3 className={`${item.Name.toLowerCase() === "worms" ? "text-white" : "text-gray-300"}`}>{item.Name}</h3>
+                <h3 className={`${item.Name.toLowerCase() === "worms" ? "text-white" : "text-gray-500"} font-bold`}>{item.Name}</h3>
               </List.Item>
             )}
           ></List>
