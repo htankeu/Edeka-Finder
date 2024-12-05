@@ -1,11 +1,11 @@
 import { Cities } from "../elements/region-cities.elements";
 
-const RPOrte: React.FC<string> = (idRegio: string) => {
-  const regionCities: string[] = Cities[idRegio];
+const Orte: React.FC<{id:string}> = (idRegio) => {
+  const regionCities: string[] = Cities[idRegio.id];
 
   return (
     <>
-      <div>
+      <div className="">
         {regionCities.map((city) => {
           return <div>{city}</div>;
         })}
@@ -14,4 +14,4 @@ const RPOrte: React.FC<string> = (idRegio: string) => {
   );
 };
 
-export default RPOrte;
+export default Orte;
