@@ -1,9 +1,5 @@
 import { useState } from "react";
 import HeaderNav from "../components/nav/Header-nav.component";
-import HomeComponent from "../components/Home.component";
-import GermanMap from "../components/home/home-svg.component";
-import Rhinland from "../components/germany/rhinland.component";
-import RPOrte from "../components/stdOrte-RP.component";
 import Login from "../components/Auth-login.component";
 import Register from "../components/Auth-register.component";
 
@@ -18,10 +14,6 @@ const AuthPage: React.FC = () => {
       <div className="bg-zinc-800">
         <HeaderNav />
         {isLogin ? <Login toogle={toogleAuth}/> : <Register toogle={toogleAuth} />}
-        {/* <Rhinland/> */}
-        {/* <GermanMap/> */}
-        {/* <HomeComponent/> */}
-        {/* <RPOrte/> */}
       </div>
     </>
   );

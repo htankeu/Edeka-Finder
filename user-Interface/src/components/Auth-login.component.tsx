@@ -1,9 +1,11 @@
 import { ArrowRightOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Flex, Form, Input, Space } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const Login: React.FC<{ toogle: () => void }> = (Toogle) => {
+  const navigate = useNavigate();
   const onFinish = (values: any) => {
-    console.log("OKAY");
+    navigate("/land");
   };
 
   return (

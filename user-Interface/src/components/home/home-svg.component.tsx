@@ -21,7 +21,7 @@ const GermanMap: React.FC = () => {
   return (
     <>
       <div>
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 590 1200">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 640 1200">
           <g>
             <path
               id="DE-BW"
