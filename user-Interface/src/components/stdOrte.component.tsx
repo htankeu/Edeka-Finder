@@ -66,7 +66,7 @@ const Orte: React.FC<{ id: string }> = (idRegio) => {
   return (
     <>
       <div className="flex flex-col items-center justify-center px-5 text-white mt-10">
-        <SearchCity />
+        <SearchCity id={idRegio.id}/>
         <List
           className="demo-loadmore-list"
           loading={initLoading}
