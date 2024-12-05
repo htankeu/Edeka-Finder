@@ -10,7 +10,7 @@ const SearchCity: React.FC<{ id: string }> = (idRegio) => {
   const onSelect = () => {};
 
   const searchResult = (query: string): DefaultOptionType[] => {
-    const result: string[] = regionCities.filter((value) => value.includes(query));
+    const result: string[] = regionCities.filter((value) => value.toLowerCase().includes(query.toLowerCase()));
     return result.map((city) => {
       return {
         value: city,
