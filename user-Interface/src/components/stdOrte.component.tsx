@@ -74,12 +74,12 @@ const Orte: React.FC<{ id: string }> = (idRegio) => {
         </div>
         <div className="">
           <List
-            className="demo-loadmore-list"
+            className="demo-loadmore-list text-white"
             loading={initLoading}
             itemLayout="horizontal"
             loadMore={loadMore}
             dataSource={list}
-            renderItem={(item) => <List.Item className="text-white">{item.Name}</List.Item>}
+            renderItem={(item) => <List.Item className="text-white"><h3 className="text-white">{item.Name}</h3></List.Item>}
           ></List>
         </div>
       </div>
