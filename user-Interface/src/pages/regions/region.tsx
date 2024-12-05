@@ -4,7 +4,7 @@ import Orte from "../../components/stdOrte.component";
 const Region: React.FC = () => {
   return (
     <>
-      <div className="bg-zinc-800 w-screen h-screen text-white">
+      <div className="bg-zinc-800 w-screen h-screen overflow-auto text-white">
         <HeaderNav/>
         <Orte id={"RP"}/>
       </div>
