@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Cities } from "../elements/region-cities.elements";
 import { Button, List } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+import SearchCity from "./region/search-regioCity.component";
 
 interface CityType {
   Name: string;
@@ -55,14 +57,24 @@ const Orte: React.FC<{ id: string }> = (idRegio) => {
           lineHeight: "32px",
         }}
       >
-        <Button onClick={onLoadMore}>loading more</Button>
+        <Button type="primary" onClick={onLoadMore}>
+          More <DownOutlined />
+        </Button>
       </div>
     ) : null;
 
   return (
     <>
-      <div className="">
-        <List className="demo-loadmore-list" loading={initLoading} itemLayout="horizontal" loadMore={loadMore} dataSource={list} renderItem={(item) => <List.Item>{item.Name}</List.Item>}></List>
+      <div className="flex flex-col items-center justify-center px-5 text-white mt-10">
+        <SearchCity />
+        <List
+          className="demo-loadmore-list"
+          loading={initLoading}
+          itemLayout="horizontal"
+          loadMore={loadMore}
+          dataSource={list}
+          renderItem={(item) => <List.Item className="text-white">{item.Name}</List.Item>}
+        ></List>
       </div>
     </>
   );
