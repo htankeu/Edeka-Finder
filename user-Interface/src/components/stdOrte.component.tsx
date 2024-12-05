@@ -55,6 +55,9 @@ const Orte: React.FC<{ id: string }> = (idRegio) => {
           marginTop: 12,
           height: 32,
           lineHeight: "32px",
+          display:"flex",
+          alignItems:"center",
+          justifyContent:"center"
         }}
       >
         <Button type="primary" onClick={onLoadMore}>
@@ -65,16 +68,20 @@ const Orte: React.FC<{ id: string }> = (idRegio) => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center px-5 text-white mt-10">
-        <SearchCity id={idRegio.id}/>
-        <List
-          className="demo-loadmore-list"
-          loading={initLoading}
-          itemLayout="horizontal"
-          loadMore={loadMore}
-          dataSource={list}
-          renderItem={(item) => <List.Item className="text-white">{item.Name}</List.Item>}
-        ></List>
+      <div className="flex flex-col  px-5 text-white mt-10">
+        <div className="flex items-center justify-center">
+          <SearchCity id={idRegio.id} />
+        </div>
+        <div className="">
+          <List
+            className="demo-loadmore-list"
+            loading={initLoading}
+            itemLayout="horizontal"
+            loadMore={loadMore}
+            dataSource={list}
+            renderItem={(item) => <List.Item className="text-white">{item.Name}</List.Item>}
+          ></List>
+        </div>
       </div>
     </>
   );
