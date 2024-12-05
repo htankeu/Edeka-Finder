@@ -55,9 +55,9 @@ const Orte: React.FC<{ id: string }> = (idRegio) => {
           marginTop: 12,
           height: 32,
           lineHeight: "32px",
-          display:"flex",
-          alignItems:"center",
-          justifyContent:"center"
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <Button type="primary" onClick={onLoadMore}>
@@ -79,7 +79,11 @@ const Orte: React.FC<{ id: string }> = (idRegio) => {
             itemLayout="horizontal"
             loadMore={loadMore}
             dataSource={list}
-            renderItem={(item) => <List.Item className="text-white"><h3 className="text-white">{item.Name}</h3></List.Item>}
+            renderItem={(item) => (
+              <List.Item className="text-white">
+                <h3 className={`${item.Name.toLowerCase() === "worms" ? "text-white" : "text-gray-300"}`}>{item.Name}</h3>
+              </List.Item>
+            )}
           ></List>
         </div>
       </div>
