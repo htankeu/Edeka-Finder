@@ -12,7 +12,7 @@ const SearchCity: React.FC<{ id: string }> = (idRegio) => {
   const onSelect = () => {};
 
   const handleclick = () => {
-    navigate("/scan");
+    navigate("/home");
   };
 
   const searchResult = (query: string): DefaultOptionType[] => {

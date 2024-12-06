@@ -50,7 +50,7 @@ const Orte: React.FC<{ id: string }> = (idRegio) => {
   };
 
   const handlelick = () => {
-    navigate("/scan");
+    navigate("/home");
   };
 
   const loadMore =

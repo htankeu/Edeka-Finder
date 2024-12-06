@@ -3,11 +3,16 @@ import WelcomePage from "../pages/welcome.page";
 import Land from "../pages/land";
 import Region from "../pages/regions/region";
 import Scan from "../components/scan/scan.component";
+import HomePage from "../pages/home.page";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <WelcomePage />,
+  },
+  {
+    path: "/home",
+    element: <HomePage />,
   },
   {
     path: "/land",
