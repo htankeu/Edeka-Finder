@@ -18,14 +18,14 @@ const SlideMenu: React.FC = () => {
   };
   return (
     <>
-      <div className="flex flex-row ml-3 ">
+      <div className="flex flex-row ml-3 z-99">
         <Menu
           defaultSelectedKeys={["1"]}
           defaultOpenKeys={["sub1"]}
           mode="inline"
           inlineCollapsed={collapsed}
           items={items}
-          className={`border rounded-full ${collapsed ? "py-5" : "py-20 pr-5"}`}
+          className={`border rounded-full ${collapsed ? "py-5" : "py-20 pr-2"}`}
           style={{
             width: collapsed ? "50px" : "150px",
           }}

@@ -1,6 +1,6 @@
 import { Button, type MenuProps } from "antd";
 import edekaFinder from "../../assets/logo-edeka.png";
-import { BarcodeOutlined, MenuFoldOutlined, MenuOutlined, SettingOutlined, UserOutlined } from "@ant-design/icons";
+import { BarcodeOutlined, MenuFoldOutlined, MenuOutlined, SettingOutlined, ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -27,6 +27,9 @@ const HeaderNav: React.FC = () => {
         <div className="flex flex-row gap-3">
           <Button type="primary" onClick={handleScan} style={{ marginBottom: 16 }}>
             <BarcodeOutlined />
+          </Button>
+          <Button type="primary" onClick={handleScan} style={{ marginBottom: 16 }}>
+            <ShoppingCartOutlined />
           </Button>
           <div className="mr-3">
             <Button type="primary" onClick={toggleCollapsed} style={{ marginBottom: 16 }}>
