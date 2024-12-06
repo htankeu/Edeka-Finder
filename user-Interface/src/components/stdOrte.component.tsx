@@ -3,6 +3,7 @@ import { Cities } from "../elements/region-cities.elements";
 import { Button, List } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import SearchCity from "./region/search-regioCity.component";
+import { useNavigate } from "react-router-dom";
 
 interface CityType {
   Name: string;
@@ -18,6 +19,7 @@ const Orte: React.FC<{ id: string }> = (idRegio) => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<CityType[]>([]);
   const [list, setList] = useState<CityType[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setInitLoading(false);
@@ -45,6 +47,10 @@ const Orte: React.FC<{ id: string }> = (idRegio) => {
   const onLoadMore = () => {
     setLoading(true);
     setList(data.concat([...new Array(count)].map(() => ({ Name: "" }))));
+  };
+
+  const handlelick = () => {
+    navigate("/scan");
   };
 
   const loadMore =
@@ -80,7 +86,12 @@ const Orte: React.FC<{ id: string }> = (idRegio) => {
             loadMore={loadMore}
             dataSource={list}
             renderItem={(item) => (
-              <List.Item className="text-white">
+              <List.Item
+                className="text-white"
+                onClick={() => {
+                  item.Name.toLowerCase() === "worms" ? handlelick() : () => {};
+                }}
+              >
                 <h3 className={`${item.Name.toLowerCase() === "worms" ? "text-white" : "text-gray-500"} font-bold`}>{item.Name}</h3>
               </List.Item>
             )}
