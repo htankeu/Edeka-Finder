@@ -1,17 +1,21 @@
 import { Button, type MenuProps } from "antd";
-import edekaFinder from "../../assets/logo-edeka.png";
+import edekaFinder from "../../assets/edekaFinder-logo.png";
 import { BarcodeOutlined, MenuFoldOutlined, MenuOutlined, SettingOutlined, ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 type MenuItem = Required<MenuProps>["items"][number];
+interface HeaderMenu {
+  isHome: boolean;
+  isConnect?: boolean;
+}
 
 const items: MenuItem[] = [
   { key: "1", icon: <SettingOutlined />, label: "Settings" },
   { key: "2", icon: <UserOutlined />, label: "Profile" },
 ];
 
-const HeaderNav: React.FC = () => {
+const HeaderNav: React.FC<HeaderMenu> = (IsHome: HeaderMenu) => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
 
@@ -25,18 +29,24 @@ const HeaderNav: React.FC = () => {
       <div className="flex flex-row justify-between items-center">
         <img src={edekaFinder.src} width={100} />
         <div className="flex flex-row gap-3">
-          <Button type="primary" onClick={handleScan} style={{ marginBottom: 16 }}>
-            <BarcodeOutlined />
-          </Button>
-          <Button type="primary" onClick={handleScan} style={{ marginBottom: 16 }}>
-            <ShoppingCartOutlined />
-          </Button>
-          <div className="mr-3">
-            <Button type="primary" onClick={toggleCollapsed} style={{ marginBottom: 16 }}>
-              {!collapsed ? <MenuOutlined /> : <MenuFoldOutlined />}
-            </Button>
-            {/* <Menu defaultSelectedKeys={["1"]} defaultOpenKeys={["sub1"]} mode="inline" theme="dark" inlineCollapsed={collapsed} items={items} /> */}
-          </div>
+          {IsHome.isHome && (
+            <div className="flex flex-row gap-2">
+              <Button type="primary" onClick={handleScan} style={{ marginBottom: 16 }}>
+                <BarcodeOutlined />
+              </Button>
+              <Button type="primary" onClick={handleScan} style={{ marginBottom: 16 }}>
+                <ShoppingCartOutlined />
+              </Button>
+            </div>
+          )}
+          {IsHome.isConnect && (
+            <div className="mr-3">
+              <Button type="primary" onClick={toggleCollapsed} style={{ marginBottom: 16 }}>
+                {!collapsed ? <MenuOutlined /> : <MenuFoldOutlined />}
+              </Button>
+              {/* <Menu defaultSelectedKeys={["1"]} defaultOpenKeys={["sub1"]} mode="inline" theme="dark" inlineCollapsed={collapsed} items={items} /> */}
+            </div>
+          )}
         </div>
       </div>
     </>

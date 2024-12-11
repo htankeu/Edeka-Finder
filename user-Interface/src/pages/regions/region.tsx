@@ -5,8 +5,8 @@ const Region: React.FC = () => {
   return (
     <>
       <div className="bg-zinc-800 w-screen h-screen overflow-auto text-white">
-        <HeaderNav/>
-        <Orte id={"RP"}/>
+        <HeaderNav isHome={false} isConnect={true} />
+        <Orte id={"RP"} />
       </div>
     </>
   );

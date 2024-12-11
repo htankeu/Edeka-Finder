@@ -12,8 +12,8 @@ const AuthPage: React.FC = () => {
   return (
     <>
       <div className="bg-zinc-800">
-        <HeaderNav />
-        {isLogin ? <Login toogle={toogleAuth}/> : <Register toogle={toogleAuth} />}
+        <HeaderNav isHome={false} />
+        {isLogin ? <Login toogle={toogleAuth} /> : <Register toogle={toogleAuth} />}
       </div>
     </>
   );

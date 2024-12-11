@@ -1,4 +1,4 @@
-import edekabg from "../assets/logo-edeka.png";
+import edekabg from "../assets/edekaFinder-logo.png";
 import type { SplashModel } from "../models/splash.model";
 
 const WelcomeSplash: React.FC<SplashModel> = (splasParam: SplashModel) => {

@@ -5,7 +5,7 @@ const HomePage: React.FC = () => {
   return (
     <>
       <div className="bg-zinc-800 w-screen h-screen">
-        <HeaderNav />
+        <HeaderNav isHome={true} isConnect={true}/>
         <div className="h-full flex flex-row">
           <div className="flex justify-center items-center">
             <SlideMenu />

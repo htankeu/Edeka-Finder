@@ -12,7 +12,7 @@ const Land: React.FC = () => {
   return (
     <>
       <div className="w-screen h-screen bg-zinc-800 flex flex-col gap-16">
-        <HeaderNav />
+        <HeaderNav isHome={false} isConnect={true}/>
         <div className={`h-full ${!ischooseLand ? "flex items-center justify-center" : ""}`}>{!ischooseLand ? <ChooseLand onclick={chooseTheLand} /> : <GermanMap />}</div>
       </div>
     </>
