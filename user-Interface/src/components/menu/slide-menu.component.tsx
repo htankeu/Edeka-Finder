@@ -11,7 +11,7 @@ const items: MenuItem[] = [
 ];
 
 const SlideMenu: React.FC = () => {
-  const [collapsed, setCollapsed] = useState<boolean>(false);
+  const [collapsed, setCollapsed] = useState<boolean>(true);
 
   const handleCollapse = () => {
     setCollapsed((prev) => !prev);
