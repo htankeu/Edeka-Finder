@@ -1,4 +1,4 @@
-import { Scanner } from "@yudiel/react-qr-scanner";
+// import { Scanner } from "@yudiel/react-qr-scanner";
 import HeaderNav from "../nav/Header-nav.component";
 
 const Scan: React.FC = () => {
@@ -7,7 +7,7 @@ const Scan: React.FC = () => {
       <div className="w-screen h-screen bg-zinc-800">
         <HeaderNav isHome={true} isConnect={true} />
         <div className="w-full h-full bg-zinc-800 flex items-center justify-center">
-          <Scanner
+          {/* <Scanner
             formats={["aztec", "code_128", "code_39", "codabar", "code_93", "databar"]}
             onScan={(Result) => console.log("The scan-results", Result)}
             allowMultiple={true}
@@ -15,7 +15,7 @@ const Scan: React.FC = () => {
             onError={() => {
               console.error("Error shown");
             }}
-          />
+          /> */}
         </div>
       </div>
     </>

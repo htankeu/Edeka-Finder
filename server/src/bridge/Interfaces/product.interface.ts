@@ -11,4 +11,5 @@ export interface IProduct {
   ray: IRay;
   rack: IRack;
   Quantity: number;
+  image?: string;
 }
