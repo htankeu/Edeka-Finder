@@ -13,6 +13,6 @@ export class Sesson implements ISession {
   @Column({ type: "uuid" })
   sessionId: string;
 
-  @Column({ type: "datetime" })
+  @Column({ type: "int" })
   CreatedAt: BigInt;
 }

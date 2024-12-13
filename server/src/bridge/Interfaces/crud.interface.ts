@@ -3,7 +3,7 @@ export interface CRUD<T> {
 
   create(resources: any): Promise<T>;
 
-  read(key: any): Promise<any>;
+  read(key: any): Promise<T | null>;
 
   update(key: any, resources: any): Promise<boolean>;
 
