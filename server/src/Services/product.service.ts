@@ -3,6 +3,7 @@ import { CRUD } from "../bridge/Interfaces/crud.interface";
 import { Product } from "../entity/Product";
 import { dataSource } from "../dataSource";
 import { IProduct } from "../bridge/Interfaces/product.interface";
+import { listCount } from "../bridge/models/find.model";
 
 export class productService implements CRUD<Product> {
   private productRepository: Repository<Product>;
@@ -11,8 +12,14 @@ export class productService implements CRUD<Product> {
     this.productRepository = dataSource.getRepository(Product);
   }
 
-  list(take: number, number: number): Promise<any> {
-    throw new Error("Method not implemented.");
+  async list(take: number, number: number): Promise<listCount<Product>> {
+    const [datas, num]: [Product[], number] = await this.productRepository.findAndCount({
+      take: take,
+    });
+    return {
+      list: datas,
+      count: num,
+    };
   }
 
   async create(resources: IProduct): Promise<Product> {
