@@ -4,6 +4,7 @@ import { Product } from "../entity/Product";
 import { dataSource } from "../dataSource";
 import { IProduct } from "../bridge/Interfaces/product.interface";
 import { listCount } from "../bridge/models/find.model";
+import { ProductListFilter } from "../bridge/models/product-list-filter.model";
 
 export class productService implements CRUD<Product> {
   private productRepository: Repository<Product>;
@@ -13,13 +14,19 @@ export class productService implements CRUD<Product> {
   }
 
   async list(take: number, number: number): Promise<listCount<Product>> {
+    const skip: number = (number - 1) * take;
     const [datas, num]: [Product[], number] = await this.productRepository.findAndCount({
       take: take,
+      skip: skip,
     });
     return {
       list: datas,
       count: num,
     };
+  }
+
+  async listFiltered(take:number,page:number, filterOptions: ProductListFilter){
+    
   }
 
   async create(resources: IProduct): Promise<Product> {
