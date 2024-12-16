@@ -1,16 +1,21 @@
-import { Repository } from "typeorm";
+import { FindOptionsWhere, Repository } from "typeorm";
 import { CRUD } from "../bridge/Interfaces/crud.interface";
 import { Product } from "../entity/Product";
 import { dataSource } from "../dataSource";
 import { IProduct } from "../bridge/Interfaces/product.interface";
 import { listCount } from "../bridge/models/find.model";
 import { ProductListFilter } from "../bridge/models/product-list-filter.model";
+import { FilterOption } from "../helper/filter-options.helper";
+import { FindOptionsHelper } from "../helper/find-options.helper";
+import { ListElements } from "../bridge/models/list-Element.model";
 
-export class productService implements CRUD<Product> {
+export class ProductService implements CRUD<Product> {
   private productRepository: Repository<Product>;
+  private findOptions: FindOptionsHelper;
 
   constructor() {
     this.productRepository = dataSource.getRepository(Product);
+    this.findOptions = new FindOptionsHelper();
   }
 
   async list(take: number, number: number): Promise<listCount<Product>> {
@@ -25,8 +30,22 @@ export class productService implements CRUD<Product> {
     };
   }
 
-  async listFiltered(take:number,page:number, filterOptions: ProductListFilter){
-    
+  async listFiltered(take: number, page: number, filterOptions: ProductListFilter): Promise<ListElements<Product>> {
+    const filterOption = new FilterOption();
+    const skip = (page - 1) * take;
+    const orderPrams: { key: string; value: any } = {
+      key: filterOptions.sortBy,
+      value: filterOptions.sort,
+    };
+    const allFilterOptions = filterOption.productFilter(filterOptions);
+    const whereParams: FindOptionsWhere<Product>[] = this.findOptions.buildWhere<Product>(allFilterOptions.filterOrArray, allFilterOptions.filterAndArray, allFilterOptions.filterRelations[0]);
+
+    const [products, quantity]: [Product[], number] = await this.productRepository.findAndCount({ where: whereParams });
+
+    return {
+      list: products,
+      quantity: quantity,
+    };
   }
 
   async create(resources: IProduct): Promise<Product> {
