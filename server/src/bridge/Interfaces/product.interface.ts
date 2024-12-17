@@ -9,7 +9,7 @@ export interface IProduct {
   Category: IProductCategory;
   ProductName: string;
   ray: IRay;
-  rack: IRack;
+  rack?: IRack;
   Quantity: number;
-  image?: string;
+  image?: Buffer;
 }

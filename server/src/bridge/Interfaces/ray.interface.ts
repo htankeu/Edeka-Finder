@@ -5,5 +5,5 @@ export interface IRay {
   rayId?: number;
   rayName: string;
   rack: IRack;
-  assiocetedProduct: IProduct[];
+  assiocetedProduct?: IProduct[];
 }
