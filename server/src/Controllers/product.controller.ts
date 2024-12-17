@@ -6,6 +6,7 @@ import { ProductListFilter } from "../bridge/models/product-list-filter.model";
 import { ProductService } from "../Services/product.service";
 import { Product } from "../entity/Product";
 import { PagedListOverview } from "../bridge/models/PagedList.model";
+import { IProduct } from "../bridge/Interfaces/product.interface";
 
 export const listProduct: RequestHandler = async (req: Request, res: Response) => {
   try {
@@ -44,7 +45,7 @@ export const listProduct: RequestHandler = async (req: Request, res: Response) =
 export const getProduct: RequestHandler = async (req: Request, res: Response) => {
   try {
     const productService: ProductService = new ProductService();
-    const productId: bigint = BigInt(req.params.id);
+    const productId: bigint = BigInt(req.params.Id);
     const product: Product | null = await productService.read(productId);
 
     if (!product) {
@@ -63,4 +64,21 @@ export const deleteProduct: RequestHandler = (req: Request, res: Response) => {}
 
 export const updateProduct: RequestHandler = (req: Request, res: Response) => {};
 
-export const createProduct: RequestHandler = (req: Request, res: Response) => {};
+export const createProduct: RequestHandler = async (req: Request, res: Response) => {
+  try {
+    const data: IProduct = req.body as IProduct;
+
+    if (!data.BarCode || !data.Category || !data.Description || !data.ProductName || !data.ProductId || !data.rack || !data.ray) {
+      res.status(HttpStatus.BAD_REQUEST).json({ error: ErrorType.InvalidInput });
+      return;
+    }
+
+    const productService: ProductService = new ProductService();
+    const createdProduct: Product = await productService.create(data);
+
+    res.status(HttpStatus.OK).json(createdProduct);
+  } catch (error) {
+    const errorMsg: string = errorHandlerHelper.handleControllerExeption(error);
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: errorMsg });
+  }
+};

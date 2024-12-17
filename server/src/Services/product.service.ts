@@ -55,7 +55,7 @@ export class ProductService implements CRUD<Product> {
     return this.productRepository.create(resources);
   }
 
-  async read(key: any): Promise<any> {
+  async read(key: any): Promise<Product | null> {
     const product: Product | null = await this.productRepository.findOne({ where: { ProductId: key } });
     return product;
   }
