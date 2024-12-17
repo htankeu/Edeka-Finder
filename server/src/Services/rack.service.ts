@@ -22,7 +22,7 @@ export class RackService implements CRUD<Rack> {
 
   async create(resources: IRack): Promise<Rack> {
     const rack: Rack | null = await this.read(resources.rackId);
-    if (!rack) throw new Error("The ID is already used");
+    if (rack) throw new Error("The ID is already used");
 
     return await this.rackRepository.create(resources);
   }
