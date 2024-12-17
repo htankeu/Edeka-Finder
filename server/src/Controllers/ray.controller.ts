@@ -1,4 +1,7 @@
 import { RequestHandler, Request, Response } from "express";
+import { RayService } from "../Services/ray.service";
+
+const rayService: RayService = new RayService();
 
 export const listRays: RequestHandler = (req: Request, res: Response) => {};
 
