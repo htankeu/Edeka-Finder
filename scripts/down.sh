@@ -4,7 +4,9 @@ PORT=3000 # Replace with the port you want to check
 
 echo "Checking if the server's port $PORT is occupied..."
 
-PID=$(netstat -anp | find :$PORT)
+PID=$(netstat -anp | find ":$PORT")
+
+echo "------------------ $PID-----------"
 
 if [ -n "$PID" ]; then
     echo "Port $PORT is in use by process $PID. Stopping it..."

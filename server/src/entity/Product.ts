@@ -21,6 +21,9 @@ export class Product implements IProduct {
   @Column({ type: "varchar", length: 20, select: false })
   BarCode: string;
 
+  @Column({ type: "bytea" })
+  image?: Buffer<ArrayBufferLike>;
+
   @ManyToOne(() => ProductCategory, (productCategory) => productCategory.CategoryId)
   Category: ProductCategory;
 
