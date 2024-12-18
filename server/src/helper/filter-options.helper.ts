@@ -14,7 +14,7 @@ export class FilterOption {
 
     if (filterOptions.search !== "") {
       const searchHelper = new SearchHelper();
-      filterOrArray = searchHelper.productSearch(filterOptions.search, ["ProductName", "Description", "Category"]);
+      filterOrArray = searchHelper.productSearch(filterOptions.search, ["ProductName", "Description"]);
     }
 
     if (filterOptions.categories.length > 0) {
