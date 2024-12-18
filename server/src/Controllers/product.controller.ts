@@ -8,6 +8,8 @@ import { Product } from "../entity/Product";
 import { PagedListOverview } from "../bridge/models/PagedList.model";
 import { IProduct } from "../bridge/Interfaces/product.interface";
 
+const productService: ProductService = new ProductService();
+
 export const listProduct: RequestHandler = async (req: Request, res: Response) => {
   try {
     let { search, categories, sortBy, sort, take = "10", page = "1" } = req.query;
@@ -55,6 +57,19 @@ export const getProduct: RequestHandler = async (req: Request, res: Response) =>
     }
 
     res.status(HttpStatus.OK).json(product);
+  } catch (error) {
+    const errorMsg: string = errorHandlerHelper.handleControllerExeption(error);
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: errorMsg });
+  }
+};
+
+export const getProductImage: RequestHandler = async (req: Request, res: Response) => {
+  try {
+    const product: Product | null = await productService.read(req.params.Id);
+    if (!product) throw ErrorType.ProductNoFound;
+
+    res.setHeader("Content-Type", "image/jpg"); // Adjust MIME type if needed
+    res.status(HttpStatus.OK).send(product.image);
   } catch (error) {
     const errorMsg: string = errorHandlerHelper.handleControllerExeption(error);
     res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: errorMsg });

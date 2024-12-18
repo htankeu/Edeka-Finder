@@ -4,6 +4,7 @@ import Land from "../pages/land";
 import Region from "../pages/regions/region";
 import Scan from "../components/scan/scan.component";
 import HomePage from "../pages/home.page";
+import RoomMap from "../components/map/map-Supermarkt.component";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/scan",
     element: <Scan />,
+  },
+  {
+    path: ":Id/map",
+    element: <RoomMap />,
   },
 ]);
 

@@ -7,6 +7,8 @@ import raysMigration from "./Migrations/MRay";
 import racksMigration from "./Migrations/MRack";
 import categoriesMigration from "./Migrations/MCategory";
 import productsMigration from "./Migrations/MProduct";
+import cors from "cors";
+import * as path from "path";
 
 dotenv.config();
 
@@ -15,7 +17,10 @@ const port: number = Number(process.env.PORT) || 3000;
 const db_port: number = Number(process.env.DB_PORT) || 5432;
 
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
+
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 app.listen(port, () => {
   dataSource
