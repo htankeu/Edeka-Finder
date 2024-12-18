@@ -1,4 +1,4 @@
-import { FindOptionsWhere, Repository } from "typeorm";
+import { FindOneOptions, FindOptionsWhere, Repository } from "typeorm";
 import { CRUD } from "../bridge/Interfaces/crud.interface";
 import { Product } from "../entity/Product";
 import { dataSource } from "../dataSource";
@@ -23,6 +23,10 @@ export class ProductService implements CRUD<Product> {
     const [datas, num]: [Product[], number] = await this.productRepository.findAndCount({
       take: take,
       skip: skip,
+      relations: {
+        Category: true,
+        ray: true,
+      },
     });
     return {
       list: datas,
@@ -39,8 +43,18 @@ export class ProductService implements CRUD<Product> {
     };
     const allFilterOptions = filterOption.productFilter(filterOptions);
     const whereParams: FindOptionsWhere<Product>[] = this.findOptions.buildWhere<Product>(allFilterOptions.filterOrArray, allFilterOptions.filterAndArray, allFilterOptions.filterRelations[0]);
+    console.log("The Where-PARAMS are:", whereParams);
 
-    const [products, quantity]: [Product[], number] = await this.productRepository.findAndCount({ where: whereParams });
+    const [products, quantity]: [Product[], number] = await this.productRepository.findAndCount({
+      skip: skip,
+      take: take,
+      where: whereParams,
+      relations: {
+        Category: true,
+        ray: true,
+      },
+      order: {},
+    });
 
     return {
       list: products,

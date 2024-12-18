@@ -1,3 +1,4 @@
+import { ILike } from "typeorm";
 import { ProductListFilter } from "../bridge/models/product-list-filter.model";
 import { SearchHelper } from "./search.helper";
 
@@ -8,7 +9,7 @@ export class FilterOption {
     const filterRelationsOrArray: { key: string; value: any }[][] = [];
     let filterRelations: {
       key: string;
-      value: { key: string; value: { key: string; value: any }[][] };
+      value: { key: string; value: any }[][];
     }[] = [];
 
     if (filterOptions.search !== "") {
@@ -18,15 +19,16 @@ export class FilterOption {
 
     if (filterOptions.categories.length > 0) {
       for (let index in filterOptions.categories) {
+        filterRelationsOrArray.push([{ key: "Category", value: ILike(`%${filterOptions.categories[index]}%`) }]);
       }
-    }
 
-    filterRelations = [
-      {
-        key: "Categories",
-        value: { key: "Category", value: filterRelationsOrArray },
-      },
-    ];
+      filterRelations = [
+        {
+          key: "Category",
+          value: filterRelationsOrArray,
+        },
+      ];
+    }
 
     return {
       filterOrArray,

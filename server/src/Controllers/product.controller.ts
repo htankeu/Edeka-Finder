@@ -28,6 +28,7 @@ export const listProduct: RequestHandler = async (req: Request, res: Response) =
     };
     const productService: ProductService = new ProductService();
     const list = await productService.listFiltered(Number(take), Number(page), filtersOptions);
+    // const list = await productService.list(Number(take), Number(page));
     const data: PagedListOverview<Product> = {
       take: Number(take),
       currentPage: 0,

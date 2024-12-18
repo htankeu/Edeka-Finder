@@ -22,13 +22,20 @@ app.listen(port, () => {
     .initialize()
     .then(() => {
       racksMigration();
-      setTimeout(() => {}, 1000);
-      categoriesMigration();
-      setTimeout(() => {}, 1000);
-      raysMigration();
-      setTimeout(() => {}, 2000);
-      productsMigration();
-      setTimeout(() => {}, 1000);
+      setTimeout(() => {
+        categoriesMigration();
+      }, 3000);
+
+      setTimeout(() => {
+        raysMigration();
+      }, 3000);
+
+      setTimeout(() => {
+        productsMigration();
+      }, 4000);
+      setTimeout(() => {
+        console.log("I waited 3seconds");
+      }, 3000);
       console.log(`The database is initializing on port: ${db_port}`);
       console.log(`The system is running on port: ${port}`);
     })

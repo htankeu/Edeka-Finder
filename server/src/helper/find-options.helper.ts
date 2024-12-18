@@ -1,11 +1,7 @@
 import { FindOptionsWhere } from "typeorm";
 
 export class FindOptionsHelper {
-  buildWhere<T>(
-    orParams: { key: string; value: any }[][],
-    andParams: { key: string; value: any }[],
-    relationOrParams: { key: string; value: { key: string; value: { key: string; value: any }[][] } }
-  ): FindOptionsWhere<T>[] {
+  buildWhere<T>(orParams: { key: string; value: any }[][], andParams: { key: string; value: any }[], relationOrParams: { key: string; value: { key: string; value: any }[][] }): FindOptionsWhere<T>[] {
     const whereCascade: { [key: string]: any }[] = [];
     const relCascade: { [key: string]: any } = this.getRelationCascade(relationOrParams);
 
@@ -20,7 +16,7 @@ export class FindOptionsHelper {
           orCascade[n.key] = n.value;
           if (relationOrParams) {
             orCascade[relationOrParams.key] = {
-              [relationOrParams.value.key]: relCascade,
+              [relationOrParams.key]: relCascade,
             };
           }
         });
@@ -53,12 +49,12 @@ export class FindOptionsHelper {
     return andCascade;
   }
 
-  private getRelationCascade(relationOrParams: { key: string; value: { key: string; value: { key: string; value: string }[][] } }): { [key: string]: any } {
+  private getRelationCascade(relationOrParams: { key: string; value: { key: string; value: string }[][] }): { [key: string]: any } {
     const relCascade: { [key: string]: any } = {};
 
     // set a where condition for the entities in relation
     if (relationOrParams) {
-      relationOrParams.value.value.forEach((params) => {
+      relationOrParams.value.forEach((params) => {
         params.forEach((m) => {
           relCascade[m.key] = m.value;
         });

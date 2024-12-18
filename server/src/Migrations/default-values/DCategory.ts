@@ -2,55 +2,55 @@ import { IProductCategory } from "../../bridge/Interfaces/product-category.inter
 
 export const ogCategory: IProductCategory = {
   CategoryId: 0,
-  Name: "Obst und Gemüse",
+  Category: "Obst und Gemüse",
 };
 
 export const fwCategory: IProductCategory = {
   CategoryId: 1,
-  Name: "Fleisch und Wurstwaren",
+  Category: "Fleisch und Wurstwaren",
 };
 export const fmCategory: IProductCategory = {
   CategoryId: 2,
-  Name: "Fisch und Meeresfrüchte",
+  Category: "Fisch und Meeresfrüchte",
 };
 export const meCategory: IProductCategory = {
   CategoryId: 3,
-  Name: "Molkereiprodukte und Eier",
+  Category: "Molkereiprodukte und Eier",
 };
 
 export const bbCategory: IProductCategory = {
   CategoryId: 4,
-  Name: "Brot und Backwaren",
+  Category: "Brot und Backwaren",
 };
 
 export const tkCategory: IProductCategory = {
   CategoryId: 5,
-  Name: "Tiefkühlprodukte",
+  Category: "Tiefkühlprodukte",
 };
 
 export const gCategory: IProductCategory = {
   CategoryId: 6,
-  Name: "Getränke",
+  Category: "Getränke",
 };
 
 export const gnCategory: IProductCategory = {
   CategoryId: 7,
-  Name: "Grundnahrungsmittel",
+  Category: "Grundnahrungsmittel",
 };
 
 export const ssCategory: IProductCategory = {
   CategoryId: 8,
-  Name: "Süßwaren und Snacks",
+  Category: "Süßwaren und Snacks",
 };
 
 export const dkCategory: IProductCategory = {
   CategoryId: 9,
-  Name: "Drogerie und Kosmetik",
+  Category: "Drogerie und Kosmetik",
 };
 
 export const hCategory: IProductCategory = {
   CategoryId: 10,
-  Name: "Haushaltswaren",
+  Category: "Haushaltswaren",
 };
 
 export const defaultCategories: IProductCategory[] = [ogCategory, fwCategory, fmCategory, meCategory, bbCategory, tkCategory, gCategory, gnCategory, ssCategory, dkCategory, hCategory];

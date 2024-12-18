@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 import { IProductCategory } from "../bridge/Interfaces/product-category.interface";
 import { Product } from "./Product";
 
@@ -8,7 +8,7 @@ export class ProductCategory implements IProductCategory {
   CategoryId: number;
 
   @Column({ type: "varchar", length: 25, select: true })
-  Name: string;
+  Category: string;
 
   @OneToMany(() => Product, (product) => product.ProductId)
   ProductList: Product[];

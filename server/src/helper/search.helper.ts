@@ -8,7 +8,7 @@ export class SearchHelper {
       result.push([{ key: `${option}`, value: ILike(`%${searchValue}%`) }]);
     }
 
-    result.push([{ key: "Categories", value: { Category: { Name: ILike(`%${searchValue}%`) } } }]);
+    result.push([{ key: "Category", value: { "Category": ILike(`%${searchValue}%`) } }]);
 
     return result;
   }
