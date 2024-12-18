@@ -48,11 +48,11 @@ export class ProductService implements CRUD<Product> {
     };
   }
 
-  async create(resources: IProduct): Promise<Product> {
+  async create(resources: IProduct): Promise<any> {
     const product: Product | null = await this.read(resources.ProductId);
     if (product) throw new Error("The ID for this product is already used.");
 
-    return this.productRepository.create(resources);
+    return this.productRepository.insert(resources);
   }
 
   async read(key: any): Promise<Product | null> {

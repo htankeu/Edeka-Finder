@@ -25,11 +25,11 @@ export class CategoryService implements CRUD<ProductCategory> {
     };
   }
 
-  async create(resources: IProductCategory): Promise<ProductCategory> {
+  async create(resources: IProductCategory): Promise<any> {
     const category: ProductCategory | null = await this.read(resources.CategoryId);
-    if (!category) throw Error("The ID is already used by another category");
+    if (category) throw Error("The ID is already used by another category");
 
-    return this.categoryRepository.create(resources);
+    return this.categoryRepository.insert(resources);
   }
 
   async read(key: any): Promise<ProductCategory | null> {
@@ -44,7 +44,7 @@ export class CategoryService implements CRUD<ProductCategory> {
 
     return (await this.categoryRepository.update({ CategoryId: key }, resources)).affected ? true : false;
   }
-  
+
   async delete(key: any): Promise<boolean> {
     const category: ProductCategory | null = await this.read(key);
     if (!category) throw Error("No Category with this ID exist in the database");

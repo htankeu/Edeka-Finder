@@ -21,12 +21,12 @@ export class RayService implements CRUD<Ray> {
     };
   }
 
-  async create(resources: IRay): Promise<Ray> {
+  async create(resources: IRay): Promise<any> {
     const ray: Ray | null = await this.read(resources.rayId);
 
     if (ray) throw Error("The ID for this ray exist already in the database");
 
-    return await this.rayRepository.create(resources);
+    return await this.rayRepository.insert(resources);
   }
 
   async read(key: any): Promise<Ray | null> {

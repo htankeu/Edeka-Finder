@@ -3,6 +3,10 @@ import dotenv from "dotenv";
 import { dataSource } from "./dataSource";
 import "reflect-metadata";
 import { indexRouter } from "./Routes/index.Router";
+import raysMigration from "./Migrations/MRay";
+import racksMigration from "./Migrations/MRack";
+import categoriesMigration from "./Migrations/MCategory";
+import productsMigration from "./Migrations/MProduct";
 
 dotenv.config();
 
@@ -17,6 +21,14 @@ app.listen(port, () => {
   dataSource
     .initialize()
     .then(() => {
+      racksMigration();
+      setTimeout(() => {}, 1000);
+      categoriesMigration();
+      setTimeout(() => {}, 1000);
+      raysMigration();
+      setTimeout(() => {}, 2000);
+      productsMigration();
+      setTimeout(() => {}, 1000);
       console.log(`The database is initializing on port: ${db_port}`);
       console.log(`The system is running on port: ${port}`);
     })

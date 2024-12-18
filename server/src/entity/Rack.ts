@@ -1,11 +1,11 @@
-import { Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { IRack } from "../bridge/Interfaces/rack.interface";
 import { Product } from "./Product";
 import { Ray } from "./Ray";
 
 @Entity()
 export class Rack implements IRack {
-  @PrimaryGeneratedColumn("increment")
+  @PrimaryColumn()
   rackId: number;
 
   @Column({ type: "int", select: true })
@@ -17,7 +17,7 @@ export class Rack implements IRack {
   @OneToOne(() => Product)
   products: Product;
 
-  @ManyToOne(() => Ray, (ray) => ray.rayId)
+  @OneToMany(() => Ray, (ray) => ray.rayId)
   rays: Ray[];
 
   @Column({ type: "int", select: false })

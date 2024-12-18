@@ -1,14 +1,10 @@
-import {
-    Column,
-    Entity, OneToMany,
-    PrimaryGeneratedColumn
-} from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { IProductCategory } from "../bridge/Interfaces/product-category.interface";
 import { Product } from "./Product";
 
 @Entity()
 export class ProductCategory implements IProductCategory {
-  @PrimaryGeneratedColumn("increment")
+  @PrimaryColumn()
   CategoryId: number;
 
   @Column({ type: "varchar", length: 25, select: true })
@@ -16,7 +12,4 @@ export class ProductCategory implements IProductCategory {
 
   @OneToMany(() => Product, (product) => product.ProductId)
   ProductList: Product[];
-
-  @Column({ type: "int" })
-  Quantity: number;
 }
