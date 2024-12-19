@@ -51,7 +51,9 @@ export class ProductService implements CRUD<Product> {
       where: whereParams,
       relations: {
         Category: true,
-        ray: true,
+        ray: {
+          rack: true,
+        },
       },
       order: {},
     });
@@ -70,7 +72,15 @@ export class ProductService implements CRUD<Product> {
   }
 
   async read(key: any): Promise<Product | null> {
-    const product: Product | null = await this.productRepository.findOne({ where: { ProductId: key } });
+    const product: Product | null = await this.productRepository.findOne({
+      where: { ProductId: key },
+      relations: {
+        Category: true,
+        ray: {
+          rack: true,
+        },
+      },
+    });
     return product;
   }
 

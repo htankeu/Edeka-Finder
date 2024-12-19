@@ -14,8 +14,8 @@ const ListProductsOverview: React.FC = () => {
   const size = "default";
   const avatarShape = "circle";
 
-  const handleProductSelect = (productId: any) => {
-    navigate(`/${productId}/map`);
+  const handleProductSelect = (productId: any, currentPosition: number[], targetPosition: number[], rackPosition: number[][]) => {
+    navigate(`/${productId}/map`, { state: { currentPosition: currentPosition, targetPosition: targetPosition, rackPosition: rackPosition } });
   };
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const ListProductsOverview: React.FC = () => {
     };
 
     fetchProducts();
+    console.log(listProducts);
   }, []);
   return (
     <>
@@ -43,7 +44,7 @@ const ListProductsOverview: React.FC = () => {
             return (
               <div
                 onClick={() => {
-                  handleProductSelect(product.ProductId);
+                  handleProductSelect(product.ProductId, [1, 1], product.ray.rack.coordonates[0], product.ray.rack.coordonates);
                 }}
               >
                 <Card hoverable style={{ width: window.innerWidth / 3 }} cover={<img alt={`${product.ProductName}`} src={`src/images/${product.ProductName.toLowerCase()}.jpg`} />}>
@@ -64,7 +65,7 @@ const ListProductsOverview: React.FC = () => {
                         style={{ color: "black" }}
                         twoToneColor={"black"}
                         onClick={() => {
-                          handleProductSelect(product.ProductId);
+                          handleProductSelect(product.ProductId, [1, 1], product.ray.rack.coordonates[0], product.ray.rack.coordonates);
                         }}
                       />
                     </div>
