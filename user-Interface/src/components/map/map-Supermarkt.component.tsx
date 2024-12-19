@@ -2,16 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import { Circle, Layer, Line, Rect, Stage } from "react-konva";
 import type { IRack } from "../../bridge/Interfaces/rack.interface";
 import rackServices from "../../services/rack.services";
-import { Skeleton } from "antd";
+import { FloatButton, Skeleton } from "antd";
 import HeaderNav from "../nav/Header-nav.component";
 import colorPalette from "../../palette/color-palette";
 import type { MapWay } from "../../models/map-way.model";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { HomeOutlined } from "@ant-design/icons";
 
 const RoomMap: React.FC = () => {
   const [listRacks, setListRacks] = useState<IRack[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [obstacles, setObstacles] = useState<number[][]>([]);
+  const navigate = useNavigate();
   const stageSize: number = window.innerWidth;
   const stageHeight: number = window.innerHeight;
   const CELL_size = 13;
@@ -25,6 +27,10 @@ const RoomMap: React.FC = () => {
     position: currentPosition,
     targetPosition: targetPosition,
     rackPosition: rackPosition,
+  };
+
+  const handleGoHome = () => {
+    navigate("/home");
   };
 
   //Path constants
@@ -181,6 +187,7 @@ const RoomMap: React.FC = () => {
           </div>
         )}
       </div>
+      <FloatButton icon={<HomeOutlined onClick={handleGoHome} />} type="primary" style={{ insetInlineEnd: 24 }} />
     </>
   );
 };

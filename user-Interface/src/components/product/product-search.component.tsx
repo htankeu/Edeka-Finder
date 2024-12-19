@@ -6,10 +6,12 @@ import Search from "antd/es/transfer/search";
 import type { ProductListFilter } from "../../bridge/models/product-list-filter.model";
 import productServices from "../../services/product.services";
 import international from "../../Intl";
+import { useNavigate } from "react-router-dom";
 
 const ProductSearch: React.FC = () => {
   const [listProducts, setListProducts] = useState<IProduct[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const navigate = useNavigate();
   const [filterParams, setFilterParams] = useState<ProductListFilter>({
     search: "",
     categories: "",
@@ -45,6 +47,10 @@ const ProductSearch: React.FC = () => {
     handleFiltering({ ...filterParams, search: searchterm });
   };
 
+  const handleProductSelect = (productId: any, currentPosition: number[], targetPosition: number[], rackPosition: number[][]) => {
+    navigate(`/${productId}/map`, { state: { currentPosition: currentPosition, targetPosition: targetPosition, rackPosition: rackPosition } });
+  };
+
   return (
     <>
       <div className="w-screen h-screen flex flex-col gap-4 bg-zinc-800">
@@ -63,7 +69,7 @@ const ProductSearch: React.FC = () => {
                 return (
                   <div
                     onClick={() => {
-                      //   handleProductSelect(product.ProductId, [1, 1], product.ray.rack.coordonates[0], product.ray.rack.coordonates);
+                      handleProductSelect(product.ProductId, [1, 1], product.ray.rack.coordonates[0], product.ray.rack.coordonates);
                     }}
                   >
                     <Card hoverable style={{ width: window.innerWidth / 3, height: 210 }} cover={<img alt={`${product.ProductName}`} src={`/src/images/${product.ProductName.toLowerCase()}.jpg`} />}>
@@ -84,7 +90,7 @@ const ProductSearch: React.FC = () => {
                             style={{ color: "black" }}
                             twoToneColor={"black"}
                             onClick={() => {
-                              // handleProductSelect(product.ProductId, [1, 1], product.ray.rack.coordonates[0], product.ray.rack.coordonates);
+                              handleProductSelect(product.ProductId, [1, 1], product.ray.rack.coordonates[0], product.ray.rack.coordonates);
                             }}
                           />
                         </div>
