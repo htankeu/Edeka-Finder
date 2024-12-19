@@ -26,9 +26,9 @@ app.listen(port, () => {
   dataSource
     .initialize()
     .then(() => {
-      racksMigration();
+      categoriesMigration();
       setTimeout(() => {
-        categoriesMigration();
+        racksMigration();
       }, 3000);
 
       setTimeout(() => {

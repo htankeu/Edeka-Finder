@@ -13,6 +13,7 @@ const defaultProducts: IProduct[] = [
     BarCode: "00001",
     Category: ogCategory,
     ProductName: "Äpfel",
+    price: 2.5,
     ray: ray1,
     Quantity: 50,
     image: fs.readFileSync(path.join(assetsDir, "äpfel.jpg")),
@@ -20,6 +21,7 @@ const defaultProducts: IProduct[] = [
   {
     Description: "Frische Karotten",
     BarCode: "00002",
+    price: 3.0,
     Category: ogCategory,
     ProductName: "Karotten",
     ray: ray1,
@@ -29,6 +31,7 @@ const defaultProducts: IProduct[] = [
   {
     Description: "Frische Tomaten",
     BarCode: "00003",
+    price: 2.99,
     Category: ogCategory,
     ProductName: "Bio Tomaten",
     ray: ray1,
@@ -38,6 +41,7 @@ const defaultProducts: IProduct[] = [
   {
     Description: "Frische Petersilie",
     BarCode: "00004",
+    price: 1.99,
     Category: ogCategory,
     ProductName: "Petersilie",
     ray: ray1,
@@ -47,6 +51,7 @@ const defaultProducts: IProduct[] = [
   {
     Description: "Frisches Rindfleisch",
     BarCode: "00005",
+    price: 10,
     Category: fwCategory,
     ProductName: "Rindfleisch",
     ray: ray2,

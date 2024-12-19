@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Double, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { IProduct } from "../bridge/Interfaces/product.interface";
 import { IProductCategory } from "../bridge/Interfaces/product-category.interface";
 import { IRack } from "../bridge/Interfaces/rack.interface";
@@ -20,6 +20,9 @@ export class Product implements IProduct {
 
   @Column({ type: "varchar", length: 20, select: false })
   BarCode: string;
+
+  @Column({ type: "float" })
+  price: number;
 
   @Column({ type: "bytea" })
   image?: Buffer<ArrayBufferLike>;

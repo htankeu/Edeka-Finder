@@ -3,6 +3,8 @@ import type { IProduct } from "../../bridge/Interfaces/product.interface";
 import productServices from "../../services/product.services";
 import { Card, Skeleton, Space } from "antd";
 import { useNavigate } from "react-router-dom";
+import international from "../../Intl";
+import { PushpinOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 
 const ListProductsOverview: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -39,21 +41,36 @@ const ListProductsOverview: React.FC = () => {
         {!loading &&
           listProducts.map((product) => {
             return (
-              <Card
-                hoverable
-                style={{ width: window.innerWidth / 3 }}
-                cover={
-                  <img
-                    alt={`${product.ProductName}`}
-                    src={`src/images/${product.ProductName.toLowerCase()}.jpg`}
-                    onClick={() => {
-                      handleProductSelect(product.ProductId);
-                    }}
-                  />
-                }
+              <div
+                onClick={() => {
+                  handleProductSelect(product.ProductId);
+                }}
               >
-                <Card.Meta title={`${product.ProductName}`} description={`${product.Description}`} />
-              </Card>
+                <Card hoverable style={{ width: window.innerWidth / 3 }} cover={<img alt={`${product.ProductName}`} src={`src/images/${product.ProductName.toLowerCase()}.jpg`} />}>
+                  <div className="text-right">
+                    <h3 className="text-sm font-bold text-red-500">{international.formatCurrency(product.price)}</h3>
+                  </div>
+
+                  <div className="flex items-center justify-center">
+                    <Card.Meta title={`${product.ProductName}`} />
+                  </div>
+
+                  <div className="flex flex-row justify-between mt-3">
+                    <div className="border rounded-full flex items-center justify-center p-2 bg-btn-secondary">
+                      <ShoppingCartOutlined style={{ color: "black", fontSize: "15px" }} />
+                    </div>
+                    <div className="border rounded-full flex items-center justify-center p-2 bg-btn-secondary">
+                      <PushpinOutlined
+                        style={{ color: "black" }}
+                        twoToneColor={"black"}
+                        onClick={() => {
+                          handleProductSelect(product.ProductId);
+                        }}
+                      />
+                    </div>
+                  </div>
+                </Card>
+              </div>
             );
           })}
       </div>

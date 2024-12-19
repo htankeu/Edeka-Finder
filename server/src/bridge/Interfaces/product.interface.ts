@@ -5,6 +5,7 @@ import { IRay } from "./ray.interface";
 export interface IProduct {
   ProductId?: number;
   Description: string;
+  price: number;
   BarCode: string;
   Category: IProductCategory;
   ProductName: string;

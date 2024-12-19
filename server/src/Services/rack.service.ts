@@ -12,7 +12,11 @@ export class RackService implements CRUD<Rack> {
     this.rackRepository = dataSource.getRepository(Rack);
   }
   async list(take: number, number: number): Promise<listCount<Rack>> {
-    const [racks, numOfRack]: [Rack[], number] = await this.rackRepository.findAndCount();
+    const [racks, numOfRack]: [Rack[], number] = await this.rackRepository.findAndCount({
+      relations: {
+        category: true,
+      },
+    });
 
     return {
       list: racks,

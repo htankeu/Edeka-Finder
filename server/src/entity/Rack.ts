@@ -1,7 +1,9 @@
-import { Column, Entity, ManyToOne, OneToMany, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { IRack } from "../bridge/Interfaces/rack.interface";
 import { Product } from "./Product";
 import { Ray } from "./Ray";
+import { ProductCategory } from "./ProductCategory";
+import { IProductCategory } from "../bridge/Interfaces/product-category.interface";
 
 @Entity()
 export class Rack implements IRack {
@@ -14,7 +16,12 @@ export class Rack implements IRack {
   @Column("json")
   coordonates: number[][];
 
+  @OneToOne(() => ProductCategory)
+  @JoinColumn()
+  category: ProductCategory;
+
   @OneToOne(() => Product)
+  @JoinColumn()
   products: Product;
 
   @OneToMany(() => Ray, (ray) => ray.rayId)
