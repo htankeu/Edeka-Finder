@@ -5,6 +5,7 @@ import Region from "../pages/regions/region";
 import Scan from "../components/scan/scan.component";
 import HomePage from "../pages/home.page";
 import RoomMap from "../components/map/map-Supermarkt.component";
+import ProductSearch from "../components/product/product-search.component";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/scan",
     element: <Scan />,
+  },
+  {
+    path: "home/product/search",
+    element: <ProductSearch />,
   },
   {
     path: ":Id/map",

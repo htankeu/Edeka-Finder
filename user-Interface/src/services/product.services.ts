@@ -14,15 +14,15 @@ class ProductServices {
   }
 
   async getProducts(
-    page: number = 1,
-    take: number = 15,
     filterparams: ProductListFilter = {
       search: "",
       categories: "",
       manufacturer: "",
       sort: "ASC",
       sortBy: "",
-    }
+    },
+    page: number = 1,
+    take: number = 15
   ): Promise<IProduct[]> {
     const result = await axios.get(`${this.SERVER_HOST}/product?page=${page}&take=${take}&search=${filterparams.search}&sort=${filterparams.sort}&categories=${filterparams.categories}`);
     const dataResult: PagedListOverview<IProduct> = result.data;

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { IProduct } from "../../bridge/Interfaces/product.interface";
 import productServices from "../../services/product.services";
-import { Card, Skeleton, Space } from "antd";
+import { Card, Skeleton, Space, Spin } from "antd";
 import { useNavigate } from "react-router-dom";
 import international from "../../Intl";
 import { PushpinOutlined, ShoppingCartOutlined } from "@ant-design/icons";
@@ -20,10 +20,19 @@ const ListProductsOverview: React.FC = () => {
 
   useEffect(() => {
     const fetchProducts = () => {
-      productServices.getProducts().then((products) => {
-        setListProducts(products);
-        setLoading(false);
-      });
+      productServices
+        .getProducts()
+        .then((products) => {
+          setListProducts(products);
+        })
+        .catch((error) => {
+          throw Error(error);
+        })
+        .finally(() => {
+          {
+            setLoading(false);
+          }
+        });
     };
 
     fetchProducts();
@@ -31,7 +40,7 @@ const ListProductsOverview: React.FC = () => {
   }, []);
   return (
     <>
-      <div className="overflow-x-hidden overflow-y-scroll flex flex-wrap flex-row gap-3">
+      <div className="w-screen h-screen overflow-x-hidden overflow-y-scroll flex justify-center flex-wrap flex-row gap-3">
         {loading && (
           <Space>
             <Skeleton.Avatar active={active} size={size} shape={avatarShape} />
@@ -47,7 +56,7 @@ const ListProductsOverview: React.FC = () => {
                   handleProductSelect(product.ProductId, [1, 1], product.ray.rack.coordonates[0], product.ray.rack.coordonates);
                 }}
               >
-                <Card hoverable style={{ width: window.innerWidth / 3 }} cover={<img alt={`${product.ProductName}`} src={`src/images/${product.ProductName.toLowerCase()}.jpg`} />}>
+                <Card hoverable style={{ width: window.innerWidth / 3, height: 210 }} cover={<img alt={`${product.ProductName}`} src={`src/images/${product.ProductName.toLowerCase()}.jpg`} />}>
                   <div className="text-right">
                     <h3 className="text-sm font-bold text-red-500">{international.formatCurrency(product.price)}</h3>
                   </div>

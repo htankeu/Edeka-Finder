@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Cities } from "../elements/region-cities.elements";
-import { Button, List } from "antd";
+import { Button, List, Space } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import SearchCity from "./region/search-regioCity.component";
 import { useNavigate } from "react-router-dom";
@@ -92,7 +92,10 @@ const Orte: React.FC<{ id: string }> = (idRegio) => {
                   item.Name.toLowerCase() === "worms" ? handlelick() : () => {};
                 }}
               >
-                <h3 className={`${item.Name.toLowerCase() === "worms" ? "text-white" : "text-gray-500"} font-bold`}>{item.Name}</h3>
+                <Space.Compact className="w-screen">
+                  <Button className="bg-btn-primary-blue"></Button>
+                  <h3 className={`w-full flex justify-center items-center  ${item.Name.toLowerCase() === "worms" ? "text-black bg-white" : "text-gray-800 bg-gray-500"} font-bold`}>{item.Name}</h3>
+                </Space.Compact>
               </List.Item>
             )}
           ></List>
