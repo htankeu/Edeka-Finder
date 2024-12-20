@@ -19,6 +19,9 @@ const ProductSearch: React.FC = () => {
     sort: "ASC",
     sortBy: "",
   });
+  const handleGoHome = () => {
+    navigate("/home");
+  };
 
   const handleFiltering = (filters: ProductListFilter) => {
     try {
@@ -55,7 +58,9 @@ const ProductSearch: React.FC = () => {
     <>
       <div className="w-screen h-screen flex flex-col gap-4 bg-zinc-800">
         <div className="flex flex-row justify-between px-2 bg-btn-primary py-3">
-          <h1 className="text-btn-primary-blue font-bold">EDEKA Finder</h1>
+          <h1 className="text-btn-primary-blue font-bold cursor-pointer" onClick={handleGoHome}>
+            EDEKA Finder
+          </h1>
           <ShopOutlined style={{ fontSize: "20px", color: "#145398" }} />
         </div>
         <div className="flex flex-col justify-center items-center gap-9">
