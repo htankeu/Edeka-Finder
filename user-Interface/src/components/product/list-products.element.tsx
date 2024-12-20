@@ -9,6 +9,7 @@ import { PushpinOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 const ListProductsOverview: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [listProducts, setListProducts] = useState<IProduct[]>([]);
+  const [numProducts, setNumProducts] = useState<number>(0);
   const navigate = useNavigate();
   const active = false;
   const size = "default";
@@ -16,6 +17,21 @@ const ListProductsOverview: React.FC = () => {
 
   const handleProductSelect = (productId: any, currentPosition: number[], targetPosition: number[], rackPosition: number[][]) => {
     navigate(`/${productId}/map`, { state: { currentPosition: currentPosition, targetPosition: targetPosition, rackPosition: rackPosition } });
+  };
+
+  const handleProductBuy = (product: IProduct) => {
+    const values: string | null = localStorage.getItem("products");
+    if (values != null) {
+      const products = JSON.parse(values) as IProduct[];
+      products.push(product);
+      setNumProducts(products.length);
+      localStorage.setItem("products", JSON.stringify(products));
+      return;
+    }
+    const products: IProduct[] = [];
+    products.push(product);
+    setNumProducts(products.length);
+    localStorage.setItem("products", JSON.stringify(products));
   };
 
   useEffect(() => {
@@ -51,12 +67,8 @@ const ListProductsOverview: React.FC = () => {
         {!loading &&
           listProducts.map((product) => {
             return (
-              <div
-                onClick={() => {
-                  handleProductSelect(product.ProductId, [1, 1], product.ray.rack.coordonates[0], product.ray.rack.coordonates);
-                }}
-              >
-                <Card hoverable style={{ width: window.innerWidth / 3, height: 210 }} cover={<img alt={`${product.ProductName}`} src={`src/images/${product.ProductName.toLowerCase()}.jpg`} />}>
+              <div onClick={() => {}}>
+                <Card hoverable style={{ width: window.innerWidth / 3, height: 210 }} cover={<img alt={`${product.ProductName}`} src={`/src/images/${product.ProductName.toLowerCase()}.jpg`} />}>
                   <div className="text-right">
                     <h3 className="text-sm font-bold text-red-500">{international.formatCurrency(product.price)}</h3>
                   </div>
@@ -67,7 +79,12 @@ const ListProductsOverview: React.FC = () => {
 
                   <div className="flex flex-row justify-between mt-3">
                     <div className="border rounded-full flex items-center justify-center p-2 bg-btn-secondary">
-                      <ShoppingCartOutlined style={{ color: "black", fontSize: "15px" }} />
+                      <ShoppingCartOutlined
+                        style={{ color: "black", fontSize: "15px" }}
+                        onClick={() => {
+                          handleProductBuy(product);
+                        }}
+                      />
                     </div>
                     <div className="border rounded-full flex items-center justify-center p-2 bg-btn-secondary">
                       <PushpinOutlined

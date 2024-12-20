@@ -6,6 +6,7 @@ import Scan from "../components/scan/scan.component";
 import HomePage from "../pages/home.page";
 import RoomMap from "../components/map/map-Supermarkt.component";
 import ProductSearch from "../components/product/product-search.component";
+import Shop from "../pages/shop.page";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/scan",
     element: <Scan />,
+  },
+  {
+    path: "/shop",
+    element: <Shop />,
   },
   {
     path: "home/product/search",
