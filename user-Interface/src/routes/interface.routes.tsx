@@ -7,6 +7,7 @@ import HomePage from "../pages/home.page";
 import RoomMap from "../components/map/map-Supermarkt.component";
 import ProductSearch from "../components/product/product-search.component";
 import Shop from "../pages/shop.page";
+import Facture from "../pages/facture.page";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/shop",
     element: <Shop />,
+  },
+  {
+    path: "/facture",
+    element: <Facture />,
   },
   {
     path: "home/product/search",

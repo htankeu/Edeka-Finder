@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import HeaderNav from "../components/nav/Header-nav.component";
 import type { IProduct } from "../bridge/Interfaces/product.interface";
 import international from "../Intl";
-import { Card } from "antd";
+import { Button, Card } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const Shop: React.FC = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBuyedProducts = () => {
@@ -22,11 +24,15 @@ const Shop: React.FC = () => {
     fetchBuyedProducts();
   }, []);
 
+  const handlePAY = () => {
+    navigate("/facture");
+  };
+
   return (
     <>
       <div className="bg-zinc-800 w-screen h-screen">
         <HeaderNav isHome={true} isConnect={true} />
-        <div className="flex flex-col items-center justify-center overflow-x-hidden overflow-y-scroll">
+        <div className="flex flex-col items-center justify-center overflow-x-hidden overflow-y-scroll relative">
           {products.map((product) => (
             <div>
               <Card style={{ width: 300 }}>
@@ -45,6 +51,12 @@ const Shop: React.FC = () => {
               </Card>
             </div>
           ))}
+
+          <div className=" fixed bottom-10">
+            <Button className="px-6 font-bold" onClick={handlePAY}>
+              Rechnung erstellen
+            </Button>
+          </div>
         </div>
       </div>
     </>
