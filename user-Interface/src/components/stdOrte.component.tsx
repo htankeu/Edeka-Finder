@@ -94,7 +94,9 @@ const Orte: React.FC<{ id: string }> = (idRegio) => {
               >
                 <Space.Compact className="w-screen">
                   <Button className="bg-btn-primary-blue"></Button>
-                  <h3 className={`w-full flex justify-center items-center  ${item.Name.toLowerCase() === "worms" ? "text-black bg-white" : "text-gray-800 bg-gray-500"} font-bold`}>{item.Name}</h3>
+                  <h3 className={`w-full flex justify-center items-center cursor-pointer  ${item.Name.toLowerCase() === "worms" ? "text-black bg-white" : "text-gray-800 bg-gray-500"} font-bold`}>
+                    {item.Name}
+                  </h3>
                 </Space.Compact>
               </List.Item>
             )}

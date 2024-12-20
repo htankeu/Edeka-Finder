@@ -29,18 +29,18 @@ app.listen(port, () => {
       categoriesMigration();
       setTimeout(() => {
         racksMigration();
-      }, 3000);
+      }, 2000);
 
       setTimeout(() => {
         raysMigration();
-      }, 3000);
+      }, 4000);
 
       setTimeout(() => {
         productsMigration();
-      }, 4000);
+      }, 5000);
       setTimeout(() => {
         console.log("I waited 3seconds");
-      }, 3000);
+      }, 6000);
       console.log(`The database is initializing on port: ${db_port}`);
       console.log(`The system is running on port: ${port}`);
     })

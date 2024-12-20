@@ -58,10 +58,10 @@ const RoomMap: React.FC = () => {
 
       if (row === end[0] && col === end[1]) return path;
 
-      if (!visited.has(pos!.toString())) {
-        visited.add(pos!.toString());
-        console.log("i AM COMING HIER");
+      if (visited.has(pos!.toString())) {
+        continue;
       }
+      visited.add(pos!.toString());
 
       const neighbors = [
         [row - 1, col], // Up
@@ -149,41 +149,46 @@ const RoomMap: React.FC = () => {
             <div>
               <HeaderNav isHome={true} isConnect={true} />
             </div>
-            <Stage width={stageSize} height={stageHeight}>
-              <Layer>
-                {listRacks.map((rack, rackIndex) =>
-                  rack.coordonates.map(([row, col], postIndex) => (
-                    <React.Fragment>
-                      <Rect
-                        key={`rack-${rackIndex}-${postIndex}`}
-                        x={col * CELL_size}
-                        y={row * CELL_size}
-                        width={CELL_size * 2}
-                        height={CELL_size * 2}
-                        fill={`${colorPalette[rack.category.Category]}`} // Rack color
-                        stroke={`${colorPalette[rack.category.Category]}`}
+
+            <div className="h-screen flex justify-center mt-40">
+              <div className="bg-slate-300 h-1/3">
+                <Stage width={stageSize} height={stageHeight}>
+                  <Layer>
+                    {listRacks.map((rack, rackIndex) =>
+                      rack.coordonates.map(([row, col], postIndex) => (
+                        <React.Fragment>
+                          <Rect
+                            key={`rack-${rackIndex}-${postIndex}`}
+                            x={col * CELL_size}
+                            y={row * CELL_size}
+                            width={CELL_size * 2}
+                            height={CELL_size * 2}
+                            fill={`${colorPalette[rack.category.Category]}`} // Rack color
+                            stroke={`${colorPalette[rack.category.Category]}`}
+                          />
+                        </React.Fragment>
+                      ))
+                    )}
+                    {way.position && way.targetPosition && (
+                      //Draw the point
+                      <Circle x={toCanvasCoords(actuPos as [number, number])[0]} y={toCanvasCoords(actuPos as [number, number])[1]} radius={5} fill="blue" />
+                      // Draw the path */}
+                    )}
+                    {way.position && way.targetPosition && (
+                      <Line
+                        points={path.map((point) => toCanvasCoords(point as [number, number])).flat()} // [x1, y1, x2, y2]
+                        stroke="blue"
+                        strokeWidth={2}
+                        lineJoin="round"
+                        lineCap="round"
                       />
-                    </React.Fragment>
-                  ))
-                )}
-                {way.position && way.targetPosition && (
-                  //Draw the point
-                  <Circle x={toCanvasCoords(actuPos as [number, number])[0]} y={toCanvasCoords(actuPos as [number, number])[1]} radius={5} fill="blue" />
-                  // Draw the path */}
-                )}
-                {way.position && way.targetPosition && (
-                  <Line
-                    points={path.map((point) => toCanvasCoords(point as [number, number])).flat()} // [x1, y1, x2, y2]
-                    stroke="blue"
-                    strokeWidth={2}
-                    lineJoin="round"
-                    lineCap="round"
-                  />
-                )}
-                {/* Draw the end point */}
-                <Circle x={toCanvasCoords(end as [number, number])[0]} y={toCanvasCoords(end as [number, number])[1]} radius={5} fill="white" />
-              </Layer>
-            </Stage>
+                    )}
+                    {/* Draw the end point */}
+                    <Circle x={toCanvasCoords(end as [number, number])[0]} y={toCanvasCoords(end as [number, number])[1]} radius={5} fill="white" />
+                  </Layer>
+                </Stage>
+              </div>
+            </div>
           </div>
         )}
       </div>

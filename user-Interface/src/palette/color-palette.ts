@@ -7,9 +7,9 @@ const colorPalette: { [key: string]: string } = {
   Haushaltswaren: "gray",
   Getränke: "gray",
   "Süßwaren und Snacks": "indigo",
-  "	Fisch und Meeresfrüchte": "red",
+  "	Fisch und Meeresfrüchte": "#4f42b5",
   "Drogerie und Kosmetik": "black",
-  Tiefkühlprodukte: "blue",
+  Tiefkühlprodukte: "#7a6eda",
 };
 
 export default colorPalette;
